@@ -1,10 +1,10 @@
 # [level unrated] [PCCP 기출문제] 2번 / 석유 시추 - 250136 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/250136) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/250136?language=java) 
 
 ### 성능 요약
 
-메모리: 14.9 MB, 시간: 4.17 ms
+메모리: 64.7 MB, 시간: 43.17 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2023년 11월 2일 10:11:44
+2023년 11월 2일 10:34:44
 
 ### 문제 설명
 
