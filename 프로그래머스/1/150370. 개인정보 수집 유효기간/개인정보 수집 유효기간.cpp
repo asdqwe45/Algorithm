@@ -1,38 +1,42 @@
-#include <algorithm>
-#include <iostream>
-#include <map>
-#include <sstream>
 #include <string>
 #include <vector>
+#include <unordered_map>
+#include <sstream>
 
 using namespace std;
+
+unordered_map<char, int> um;
+
 vector<int> solution(string today, vector<string> terms, vector<string> privacies) {
     vector<int> answer;
-    int year = stoi(today.substr(0, 4));
-    int month = stoi(today.substr(5, 2));
-    int days = stoi(today.substr(8));
-    int todayD = (year)*12 * 28 + (month - 1) * 28 + days;
 
-    vector<int> ar(privacies.size());
-    map<char, int> mp;
     for (int i = 0; i < terms.size(); i++) {
         stringstream ss(terms[i]);
         char c;
         int month;
         ss >> c >> month;
-        mp[c] = month;
+        um[c] = month;
     }
+
+    int todayYear = stoi(today.substr(0, 4));
+    int todayMonth = stoi(today.substr(5, 2));
+    int todayDay = stoi(today.substr(8));
+
+    int todaySum = (todayYear * 12 + todayMonth - 1) * 28 + todayDay;
+
     for (int i = 0; i < privacies.size(); i++) {
-        int y = stoi(privacies[i].substr(0, 4));
-        int m = stoi(privacies[i].substr(5, 2));
-        int d = stoi(privacies[i].substr(8, 2));
-        char c = privacies[i].back();
-        ar[i] = (y)*12 * 28 + (m - 1) * 28 + d + mp[c] * 28 - 1;
-    }
-    for (int i = 0; i < ar.size(); i++) {
-        if (ar[i] < todayD) {
+        char ch = privacies[i].back();
+
+        int year = stoi(privacies[i].substr(0, 4));
+        int month = stoi(privacies[i].substr(5, 2));
+        int day = stoi(privacies[i].substr(8, 2));
+
+        int comSum = (year * 12 + month - 1 + um[ch]) * 28 + day - 1;
+
+        if (comSum < todaySum)
             answer.push_back(i + 1);
-        }
+
     }
+
     return answer;
 }
