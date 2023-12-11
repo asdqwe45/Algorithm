@@ -17,7 +17,7 @@ int main(int argc, char** argv)
         weight[i] = w;
 
     }
-    int d = 1;
+
     for (int i = 0; i < M; i++) {
         int mem1, mem2; cin >> mem1 >> mem2;
         if (weight[mem1] > weight[mem2]) {
